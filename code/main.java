@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //GUI created safely
+        //GUI created using event dispatch thread
         SwingUtilities.invokeLater (() -> {
 
             //Create application window
