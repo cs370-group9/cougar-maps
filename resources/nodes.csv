@@ -1,0 +1,57 @@
+﻿id,campus,building,floor,name,type,status
+1,San Marcos,Academic Hall,1,North Elevator,Elevator,Active
+2,San Marcos,Academic Hall,1,North East Corner,Hallway,Active
+3,San Marcos,Academic Hall,1,Room 102,Classroom,Active
+4,San Marcos,Academic Hall,1,Room 104,Classroom,Active
+5,San Marcos,Academic Hall,1,Restroom,Restroom,Active
+6,San Marcos,Academic Hall,1,Room 111,Classroom,Active
+7,San Marcos,Academic Hall,1,Room 113,Classroom,Active
+8,San Marcos,Academic Hall,1,Room 115,Classroom,Active
+9,San Marcos,Academic Hall,2,North Elevator,Elevator,Active
+10,San Marcos,Academic Hall,2,T-Intersection,Hallway,Active
+11,San Marcos,Academic Hall,2,Room 201,Classroom,Active
+12,San Marcos,Academic Hall,2,Room 202,Classroom,Active
+13,San Marcos,Academic Hall,2,Room 203,Classroom,Active
+14,San Marcos,Academic Hall,2,Room 204,Classroom,Active
+15,San Marcos,Academic Hall,2,Room 205,Classroom,Active
+16,San Marcos,Academic Hall,2,Room 209,Classroom,Active
+17,San Marcos,Academic Hall,2,Room 206,Classroom,Active
+18,San Marcos,Academic Hall,2,Room 211,Classroom,Active
+19,San Marcos,Academic Hall,2,T-Intersection,Hallway,Active
+20,San Marcos,Academic Hall,2,Restroom,Restroom,Active
+21,San Marcos,Academic Hall,2,Room 208,Classroom,Active
+23,San Marcos,Academic Hall,2,South Lobby,Hallway,Active
+24,San Marcos,Academic Hall,2,South Elevator,Elevator,Active
+25,San Marcos,Academic Hall,3,North Elevator,Elevator,Active
+26,San Marcos,Academic Hall,3,Room 301,Classroom,Active
+27,San Marcos,Academic Hall,3,Room 302,Classroom,Active
+28,San Marcos,Academic Hall,3,Room 303,Classroom,Active
+29,San Marcos,Academic Hall,3,Room 304,Classroom,Active
+30,San Marcos,Academic Hall,3,Room 305,Classroom,Active
+31,San Marcos,Academic Hall,3,Room 306,Classroom,Active
+32,San Marcos,Academic Hall,3,Room 308,Classroom,Active
+33,San Marcos,Academic Hall,3,Room 310,Classroom,Active
+34,San Marcos,Academic Hall,3,Room 311,Classroom,Active
+35,San Marcos,Academic Hall,3,Room 314,Classroom,Active
+36,San Marcos,Academic Hall,3,Room 315,Classroom,Active
+37,San Marcos,Academic Hall,3,Restroom,Restroom,Active
+38,San Marcos,Academic Hall,3,Room 317,Classroom,Active
+39,San Marcos,Academic Hall,3,Room 319,Classroom,Active
+40,San Marcos,Academic Hall,3,Room 324,Classroom,Active
+41,San Marcos,Academic Hall,3,South Elevator,Elevator,Active
+42,San Marcos,Academic Hall,4,North Elevator,Elevator,Active
+43,San Marcos,Academic Hall,4,Room 402,Classroom,Active
+44,San Marcos,Academic Hall,4,Room 403,Classroom,Active
+45,San Marcos,Academic Hall,4,Room 404,Classroom,Active
+46,San Marcos,Academic Hall,4,Room 403,Classroom,Active
+47,San Marcos,Academic Hall,4,Room 406,Classroom,Active
+48,San Marcos,Academic Hall,4,Room 407,Classroom,Active
+49,San Marcos,Academic Hall,4,Room 408,Classroom,Active
+50,San Marcos,Academic Hall,4,Room 410,Classroom,Active
+51,San Marcos,Academic Hall,4,Room 411A,Classroom,Active
+52,San Marcos,Academic Hall,4,Room 411B,Classroom,Active
+53,San Marcos,Academic Hall,4,Room 412,Classroom,Active
+54,San Marcos,Academic Hall,4,Restroom,Restroom,Active
+55,San Marcos,Academic Hall,4,South Elevator,Elevator,Active
+56,San Marcos,Academic Hall,4,T-Intersection,Hallway,Active
+22,San Marcos,Academic Hall,3,T-Intersection,Hallway,Active
