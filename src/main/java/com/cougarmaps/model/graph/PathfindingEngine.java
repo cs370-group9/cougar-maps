@@ -4,17 +4,7 @@ import com.cougarmaps.model.NodeStatus;
 
 import java.util.*;
 
-public class PathfindingEngine {
-
-    private final Graph graph;
-
-    public PathfindingEngine(Graph graph) {
-        this.graph = graph;
-    }
-
-    public Graph getGraph() {
-        return graph;
-    }
+public record PathfindingEngine(Graph graph) {
 
     public List<Node> findShortestPath(Node start, Node end) {
         if (start == null || end == null ||
@@ -63,7 +53,7 @@ public class PathfindingEngine {
         }
         Collections.reverse(path);
 
-        if (path.size() == 1 && !path.get(0).equals(start)) {
+        if (path.size() == 1 && !path.getFirst().equals(start)) {
             return Collections.emptyList();
         }
 
