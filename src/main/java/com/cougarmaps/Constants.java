@@ -2,6 +2,9 @@ package com.cougarmaps;
 
 public class Constants {
 
+    // Flags
+    public static final boolean DEBUG = true; // Enable debug mode for verbose logging
+
     // Resource file paths
     public static final String NODE_CSV_PATH = "resources/nodes.csv";
     public static final String EDGE_CSV_PATH = "resources/edges.csv";

@@ -1,4 +1,4 @@
-﻿id,campus,building,floor,name,type,status
+﻿id,campus,building,floor,room,type,status
 1,San Marcos,Academic Hall,1,North Elevator,Elevator,Active
 2,San Marcos,Academic Hall,1,North East Corner,Hallway,Active
 3,San Marcos,Academic Hall,1,Room 102,Classroom,Active

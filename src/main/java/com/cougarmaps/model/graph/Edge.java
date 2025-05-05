@@ -1,22 +1,29 @@
 package com.cougarmaps.model.graph;
 
 public class Edge {
-    private final Node fromNode;
-    private final Node toNode;
+    private final Node from;
+    private final Node to;
     private final double weight;
 
-    public Edge(Node fromNode, Node toNode, double weight) {
-        this.fromNode = fromNode;
-        this.toNode = toNode;
+    /**
+     * Constructor for a unidirectional edge.
+     *
+     * @param from The source node.
+     * @param to The destination node.
+     * @param weight The cost/distance between the two nodes.
+     */
+    public Edge(Node from, Node to, double weight) {
+        this.from = from;
+        this.to = to;
         this.weight = weight;
     }
 
-    public Node getFromNode() {
-        return fromNode;
+    public Node getFrom() {
+        return from;
     }
 
-    public Node getToNode() {
-        return toNode;
+    public Node getTo() {
+        return to;
     }
 
     public double getWeight() {
@@ -25,10 +32,6 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "Edge{" +
-                "fromNode=" + fromNode +
-                ", toNode=" + toNode +
-                ", weight=" + weight +
-                '}';
+        return String.format("Edge[%s → %s, %.2f]", from.getId(), to.getId(), weight);
     }
 }

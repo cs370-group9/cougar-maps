@@ -1,27 +1,32 @@
 package com.cougarmaps;
 
-import com.cougarmaps.controller.GraphController;
-import com.cougarmaps.controller.RouteController;
-import com.cougarmaps.view.PointSelectionMode;
-import com.cougarmaps.view.PointSelectionView;
+import com.cougarmaps.controller.LocationsController;
+import com.cougarmaps.data.GraphDAO;
+import com.cougarmaps.model.GraphModel;
+import com.cougarmaps.view.LocationsView;
+
+import javax.swing.*;
 
 public class CougarMaps {
-    private static PointSelectionView selectionView;
-
     public static void main(String[] args) {
-        System.out.println("🟡 Starting CougarMaps...");
+        SwingUtilities.invokeLater(() -> {
+            try {
+                // Initialize model
+                GraphModel model = GraphDAO.loadGraphFromCSV();
+                //model.addNode(new Node("600", "San Marcos", "Fake Building", "0", "Room 101", NodeType.CLASSROOM, NodeStatus.ACTIVE));
 
-        GraphController graphController = new GraphController();
-        RouteController routeController = new RouteController(graphController);
 
-        selectionView = new PointSelectionView(
-                graphController,
-                PointSelectionMode.START,
-                null,
-                null,
-                result -> routeController.handleRoute(result[0], result[1], selectionView)
-        );
+                // Initialize view (the frame is already constructed inside LocationsView)
+                LocationsView view = new LocationsView();
 
-        selectionView.setVisible(true);
+                // Initialize controller
+                LocationsController controller = new LocationsController(model, view);
+
+                // Show UI
+                view.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Failed to load graph data: " + e.getMessage());
+            }
+        });
     }
 }

@@ -1,74 +1,109 @@
 package com.cougarmaps.view;
 
+import com.cougarmaps.CougarMaps;
+import com.cougarmaps.routing.RouteStep;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.*;
+import java.io.IOException;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class DirectionsView extends BaseView {
+public class DirectionsView extends JFrame {
+    public DirectionsView(String fromLabel, String toLabel, List<RouteStep> steps, double totalDistance) {
+        setTitle("Directions");
+        setSize(800, 800);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(true);
 
-    public DirectionsView(List<String> stepList, BiConsumer<String, DirectionsView> actionCallback, PointSelectionView previousView) {
-        super("Route Directions", 500, 400);
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        setTitle("Route Directions");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new BorderLayout());
+        JEditorPane htmlPane = new JEditorPane();
+        htmlPane.setContentType("text/html");
+        htmlPane.setEditable(false);
+        htmlPane.setBackground(Color.WHITE);
 
-        // Create the model and JList
-        DefaultListModel<String> model = new DefaultListModel<>();
-        for (String step : stepList) {
-            model.addElement(step);
+        StringBuilder html = new StringBuilder(
+                "<html><body style='font-family: sans-serif; font-size: 14pt; line-height: 1.2;'>"
+        );
+        html.append("<p><strong>From:</strong> ").append(fromLabel).append("<br>");
+        html.append("<strong>To:</strong> ").append(toLabel).append("</p>");
+        html.append("<hr>");
+
+        int stepNum = 1;
+        for (RouteStep step : steps) {
+            html.append("<p><strong>Step ").append(stepNum++).append(":</strong> ")
+                    .append(step.toString())
+                    .append("</p>");
         }
 
-        JList<String> directionJList = new JList<>(model);
-        directionJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        directionJList.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        html.append("<hr>");
+        html.append("<p><strong>Total Distance:</strong> ")
+                .append(String.format("%.1f feet", totalDistance))
+                .append("</p>");
+        html.append("</body></html>");
 
-        // VERY IMPORTANT: Set preferred size
-        directionJList.setVisibleRowCount(10);
-        JScrollPane scrollPane = new JScrollPane(directionJList);
-        scrollPane.setPreferredSize(new Dimension(450, 250)); // <-- FIX
+        htmlPane.setText(html.toString());
 
-        add(scrollPane, BorderLayout.CENTER);
+        JScrollPane scrollPane = new JScrollPane(htmlPane);
+        panel.add(scrollPane, BorderLayout.CENTER);
 
-        // Buttons
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton backButton = new JButton("Back");
+        // Button panel
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
         JButton startOverButton = new JButton("Start Over");
-        JButton exitButton = new JButton("Exit");
-
-        buttonPanel.add(backButton);
-        buttonPanel.add(startOverButton);
-        buttonPanel.add(exitButton);
-
-        add(buttonPanel, BorderLayout.SOUTH);
-
-        // Button actions
-        backButton.addActionListener(e -> {
-            previousView.setVisible(true); // 💡 Reactivate selection screen
-            actionCallback.accept("back", this);
+        startOverButton.addActionListener(e -> {
+            dispose();
+            SwingUtilities.invokeLater(() -> CougarMaps.main(new String[]{}));
         });
-        startOverButton.addActionListener(e -> actionCallback.accept("start_over", this));
-        exitButton.addActionListener(e -> actionCallback.accept("exit", this));
 
-        // Now finalize layout
-        pack();
-        setVisible(true);
+        JButton copyButton = new JButton("Copy");
+        copyButton.addActionListener(e -> {
+            String htmlContent = htmlPane.getText();
 
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosed(java.awt.event.WindowEvent e) {
-                boolean anyVisible = false;
-                for (Window w : Window.getWindows()) {
-                    if (w.isVisible()) {
-                        anyVisible = true;
-                        break;
+            Transferable htmlTransferable = new Transferable() {
+                private final DataFlavor htmlFlavor = new DataFlavor("text/html;class=java.lang.String", "HTML Format");
+
+                @Override
+                public DataFlavor[] getTransferDataFlavors() {
+                    return new DataFlavor[] {
+                            DataFlavor.stringFlavor,
+                            htmlFlavor
+                    };
+                }
+
+                @Override
+                public boolean isDataFlavorSupported(DataFlavor flavor) {
+                    return flavor.equals(DataFlavor.stringFlavor) || flavor.equals(htmlFlavor);
+                }
+
+                @Override
+                public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
+                    if (isDataFlavorSupported(flavor)) {
+                        return htmlContent;
+                    } else {
+                        throw new UnsupportedFlavorException(flavor);
                     }
                 }
-                if (!anyVisible) {
-                    System.exit(0);
-                }
-            }
+            };
+
+            Toolkit.getDefaultToolkit()
+                    .getSystemClipboard()
+                    .setContents(htmlTransferable, null);
+
+            JOptionPane.showMessageDialog(this, "Directions copied to clipboard with formatting.");
         });
+
+        JButton exitButton = new JButton("Exit");
+        exitButton.addActionListener(e -> System.exit(0));
+
+        buttonPanel.add(startOverButton);
+        buttonPanel.add(copyButton);
+        buttonPanel.add(exitButton);
+
+        panel.add(buttonPanel, BorderLayout.SOUTH);
+        setContentPane(panel);
     }
 }
