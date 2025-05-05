@@ -14,6 +14,7 @@
 13,San Marcos,Academic Hall,2,Room 203,Classroom,Active
 14,San Marcos,Academic Hall,2,Room 204,Classroom,Active
 15,San Marcos,Academic Hall,2,Room 205,Classroom,Active
+125,San Marcos,Academic Hall,2,North Door,Door,Active
 16,San Marcos,Academic Hall,2,Room 209,Classroom,Active
 17,San Marcos,Academic Hall,2,Room 206,Classroom,Active
 18,San Marcos,Academic Hall,2,Room 211,Classroom,Active
@@ -102,3 +103,28 @@
 101,San Marcos,Markstein Hall,3,Intersection,Hallway,Active
 102,San Marcos,Markstein Hall,4,Intersection,Hallway,Active
 103,San Marcos,Markstein Hall,4,Restroom,Restroom,Active
+104,San Marcos,University Hall,1,Room 100,Classroom,Active
+105,San Marcos,University Hall,1,Room 101,Classroom,Active
+106,San Marcos,University Hall,1,Restoom,Restroom,Active
+107,San Marcos,University Hall,1,Elevator 1,Elevator,Active
+108,San Marcos,University Hall,1,Elevator 2,Elevator,Active
+109,San Marcos,University Hall,1,West Door,Hallway,Active
+110,San Marcos,University Hall,1,Intersection,Hallway,Active
+111,San Marcos,University Hall,2,Elevator 1,Elevator,Active
+112,San Marcos,University Hall,2,Elevator 2,Elevator,Active
+113,San Marcos,University Hall,2,West Door,Hallway,Active
+114,San Marcos,University Hall,2,Restroom,Restroom,Active
+115,San Marcos,University Hall,2,Room 237,Classroom,Active
+116,San Marcos,University Hall,2,Room 240,Classroom,Active
+117,San Marcos,University Hall,2,Room 260,Classroom,Active
+118,San Marcos,University Hall,2,Room 257,Classroom,Active
+119,San Marcos,University Hall,2,South Door,Door,Active
+120,San Marcos,University Hall,2,Room 270,Classroom,Active
+121,San Marcos,University Hall,2,Room 271,Classroom,Active
+123,San Marcos,University Hall,2,Room 272,Classroom,Active
+124,San Marcos,University Hall,2,Room 273,Classroom,Active
+125,San Marcos,University Hall,3,Elevator 1,Elevator,Active
+126,San Marcos,University Hall,3,Elevator 2,Elevator,Active
+127,San Marcos,University Hall,3,Restroom,Restroom,Active
+128,San Marcos,University Hall,3,T-Intersection,Hallway,Active
+129,San Marcos,University Hall,3,East Door,Door,Active
