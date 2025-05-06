@@ -163,14 +163,41 @@ public class LocationsController {
                 if (startMode) {
                     startNode = selectedNode;
                     startMode = false;
-                    view.getBackButton().setText("Back");
-                    view.getStartNodeLabel().setText(startNode.shortLabel());
-                    floorDropDown.removeAllItems();
-                    roomDropDown.removeAllItems();
-                    buildingDropDown.setSelectedIndex(-1);
-                    findClassroomRadioButton.setEnabled(false);
-                    findRestroomRadioButton.setEnabled(false);
-                    nextButton.setEnabled(false);
+
+                    if (endNode == null) {
+                        view.getBackButton().setText("Back");
+                        view.getStartNodeLabel().setText(startNode.shortLabel());
+                        floorDropDown.removeAllItems();
+                        roomDropDown.removeAllItems();
+                        buildingDropDown.setSelectedIndex(-1);
+                        findClassroomRadioButton.setEnabled(false);
+                        findRestroomRadioButton.setEnabled(false);
+                        nextButton.setEnabled(false);
+                    } else {
+                        view.getBackButton().setLabel("Back");
+                        building = endNode.getBuilding();
+                        floor = endNode.getFloor();
+                        room = endNode.getRoom();
+
+                        view.getBuildingDropDown().setSelectedItem(building);
+
+                        if (buildingFloorRoomMap.containsKey(building)) {
+                            List<String> floors = new ArrayList<>(buildingFloorRoomMap.get(building).keySet());
+                            Collections.sort(floors);
+                            view.setFloorDropDown(floors);
+                            view.getFloorDropDown().setSelectedItem(floor);
+
+                            List<String> rooms = new ArrayList<>(buildingFloorRoomMap.get(building).get(floor));
+                            Collections.sort(rooms);
+                            // Optional: Remove `room` if it matches startNode
+                            if (startNode != null && startNode.getBuilding().equals(building) &&
+                                    startNode.getFloor().equals(floor) && startNode.getRoom().equals(room)) {
+                                rooms.remove(room);
+                            }
+                            view.setRoomDropDown(rooms);
+                            view.getRoomDropDown().setSelectedItem(room);
+                        }
+                    }
                 } else {
                     endNode = selectedNode;
                     view.getEndNodeLabel().setText(endNode.shortLabel());

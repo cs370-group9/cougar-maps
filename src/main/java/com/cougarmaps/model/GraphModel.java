@@ -5,8 +5,6 @@ import com.cougarmaps.model.graph.Edge;
 import com.cougarmaps.model.graph.Graph;
 import com.cougarmaps.model.graph.enums.NodeStatus;
 import com.cougarmaps.model.graph.enums.NodeType;
-import com.cougarmaps.model.location.Building;
-
 
 import java.util.*;
 
@@ -17,7 +15,6 @@ import java.util.*;
  */
 public class GraphModel {
     private final Graph graph;
-    private final Map<String, Building> buildingsByName;
 
     /**
      * Constructor for the GraphModel.
@@ -25,7 +22,6 @@ public class GraphModel {
      */
     public GraphModel() {
         this.graph = new Graph();
-        this.buildingsByName = new HashMap<>();
     }
 
     /**
