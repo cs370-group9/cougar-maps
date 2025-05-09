@@ -35,9 +35,16 @@ public class RouteStep {
     public String getUnit() { return unit; }
     public String getInstruction() { return instruction; }
 
+    /**
+     * Returns a string representation of the route step.
+     * The format includes the prefix, building, room, distance, unit,
+     * and an optional instruction.
+     *
+     * @return A formatted string representing the route step.
+     */
     @Override
     public String toString() {
-        String arrow = "Walk";  // Default arrow
+        String arrow = "Walk";
 
         try {
             if (Objects.equals(from.getBuilding(), to.getBuilding())) {

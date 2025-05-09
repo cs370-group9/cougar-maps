@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cee3d0d4-958c-438a-93d5-492280add6db" name="Changes" comment="Major update">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_6_2025_9_45_AM_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_6_2025_9_45_AM_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_6_2025_9_45_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/CougarMaps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cougarmaps/CougarMaps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/controller/LocationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cougarmaps/controller/LocationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/model/GraphModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cougarmaps/model/GraphModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/model/location/Building.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/model/location/Floor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/model/location/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/routing/RouteStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cougarmaps/routing/RouteStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/CougarMaps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/CougarMaps.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController$RestroomDistance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController$RestroomDistance.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/model/GraphModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/model/GraphModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/model/location/Building.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/model/location/Floor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/model/location/Room.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/routing/RouteStep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/routing/RouteStep.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +67,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "jj4",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "C:/Users/jonat/IdeaProjects/CougarMaps/pom.xml",
