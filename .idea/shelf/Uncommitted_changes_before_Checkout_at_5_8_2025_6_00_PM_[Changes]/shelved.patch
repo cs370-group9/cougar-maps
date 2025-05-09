@@ -1,0 +1,248 @@
+Index: src/test/java/com/cougarmaps/model/GraphModelTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cougarmaps.model;\r\n\r\nimport com.cougarmaps.model.graph.Node;\r\nimport com.cougarmaps.model.graph.enums.NodeStatus;\r\nimport com.cougarmaps.model.graph.enums.NodeType;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport java.util.List;\r\n\r\nimport static org.junit.jupiter.api.Assertions.*;\r\n\r\nclass GraphModelTest {\r\n\r\n    private GraphModel graphModel;\r\n    private Node node1;\r\n    private Node node2;\r\n    private Node node3;\r\n\r\n    @BeforeEach\r\n    void setUp() {\r\n        graphModel = new GraphModel();\r\n\r\n        node1 = new Node(\"1\", \"Main\", \"Science\", \"1\", \"101\", NodeType.CLASSROOM, NodeStatus.ACTIVE);\r\n        node2 = new Node(\"2\", \"Main\", \"Science\", \"1\", \"102\", NodeType.CLASSROOM, NodeStatus.ACTIVE);\r\n        node3 = new Node(\"3\", \"Main\", \"Science\", \"1\", \"103\", NodeType.CLASSROOM, NodeStatus.RETIRED);\r\n\r\n        graphModel.addNode(node1);\r\n        graphModel.addNode(node2);\r\n        graphModel.addNode(node3);\r\n\r\n        graphModel.addEdge(node1, node2, 10.0);\r\n        graphModel.addEdge(node2, node3, 20.0);\r\n    }\r\n\r\n    @Test\r\n    void testAddAndGetNodeById() {\r\n        assertEquals(node1, graphModel.getNodeById(\"1\"));\r\n        assertEquals(node2, graphModel.getNodeById(\"2\"));\r\n        assertEquals(node3, graphModel.getNodeById(\"3\"));\r\n    }\r\n\r\n    @Test\r\n    void testGetAllNodes() {\r\n        assertEquals(3, graphModel.getAllNodes().size());\r\n    }\r\n\r\n    @Test\r\n    void testGetEdgesFromNode() {\r\n        assertEquals(1, graphModel.getEdgesFrom(node1).size());\r\n        assertEquals(2, graphModel.getEdgesFrom(node2).size());\r\n    }\r\n\r\n    @Test\r\n    void testEdgeBidirectionality() {\r\n        boolean hasForward = graphModel.getEdgesFrom(node1)\r\n                .stream().anyMatch(e -> e.getTo().equals(node2));\r\n        boolean hasReverse = graphModel.getEdgesFrom(node2)\r\n                .stream().anyMatch(e -> e.getTo().equals(node1));\r\n\r\n        assertTrue(hasForward, \"Missing edge from node1 to node2\");\r\n        assertTrue(hasReverse, \"Missing edge from node2 to node1\");\r\n    }\r\n\r\n    @Test\r\n    void testBuildingHierarchy() {\r\n        assertEquals(1, graphModel.getAllBuildings().size());\r\n        assertTrue(graphModel.getAllBuildings().stream()\r\n                .anyMatch(b -> b.getName().equals(\"Science\")));\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/cougarmaps/model/GraphModelTest.java b/src/test/java/com/cougarmaps/model/GraphModelTest.java
+--- a/src/test/java/com/cougarmaps/model/GraphModelTest.java	(revision a4083f47559e75687ddecc0ca7be9a9051ab96da)
++++ b/src/test/java/com/cougarmaps/model/GraphModelTest.java	(date 1746752361993)
+@@ -61,11 +61,4 @@
+         assertTrue(hasForward, "Missing edge from node1 to node2");
+         assertTrue(hasReverse, "Missing edge from node2 to node1");
+     }
+-
+-    @Test
+-    void testBuildingHierarchy() {
+-        assertEquals(1, graphModel.getAllBuildings().size());
+-        assertTrue(graphModel.getAllBuildings().stream()
+-                .anyMatch(b -> b.getName().equals("Science")));
+-    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"cee3d0d4-958c-438a-93d5-492280add6db\" name=\"Changes\" comment=\"Major update\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cougarmaps/CougarMaps.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cougarmaps/CougarMaps.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cougarmaps/controller/LocationsController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cougarmaps/controller/LocationsController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cougarmaps/routing/RouteStep.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cougarmaps/routing/RouteStep.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/CougarMaps.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/CougarMaps.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController$RestroomDistance.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController$RestroomDistance.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/routing/RouteStep.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cougarmaps/routing/RouteStep.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;JJFrozenInCarbonite&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/cs370-group9/cougar-maps.git&quot;,\r\n    &quot;accountId&quot;: &quot;29abd299-b354-4cd5-994d-d9b819da3d5c&quot;\r\n  }\r\n}</component>\r\n  <component name=\"KubernetesApiPersistence\">{}</component>\r\n  <component name=\"KubernetesApiProvider\">{\r\n  &quot;isMigrated&quot;: true\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2wbqncjjfZTVb3ApSNN6iTQhDO0\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.CougarMaps.executor\": \"Run\",\r\n    \"Application.MainView.executor\": \"Run\",\r\n    \"JUnit.All in CougarMaps.executor\": \"Run\",\r\n    \"JUnit.PathfindingEngineTest.executor\": \"Run\",\r\n    \"JUnit.com.cougarmaps in CougarMaps.executor\": \"Run\",\r\n    \"Maven.CougarMaps [clean].executor\": \"Run\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"jj4\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"junie.onboarding.icon.badge.shown\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/jonat/IdeaProjects/CougarMaps/pom.xml\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\jonat\\IdeaProjects\\CougarMaps\\src\\main\\resources\\com\\cougarmaps\\view\" />\r\n      <recent name=\"C:\\Users\\jonat\\IdeaProjects\\CougarMaps\\src\\main\\resources\" />\r\n      <recent name=\"C:\\Users\\jonat\\IdeaProjects\\CougarMaps\\resources\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunAnythingCache\">\r\n    <option name=\"myCommands\">\r\n      <command value=\"mvn clean\" />\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.CougarMaps\">\r\n    <configuration name=\"CougarMaps\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cougarmaps.CougarMaps\" />\r\n      <module name=\"CougarMaps\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cougarmaps.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"All in CougarMaps\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"CougarMaps\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"TEST_OBJECT\" value=\"package\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PathfindingEngineTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"CougarMaps\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cougarmaps.engine.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.cougarmaps.engine\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cougarmaps.engine.PathfindingEngineTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"com.cougarmaps in CougarMaps\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"CougarMaps\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cougarmaps.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.cougarmaps\" />\r\n      <option name=\"TEST_OBJECT\" value=\"package\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.CougarMaps\" />\r\n      <item itemvalue=\"JUnit.All in CougarMaps\" />\r\n      <item itemvalue=\"JUnit.com.cougarmaps in CougarMaps\" />\r\n      <item itemvalue=\"JUnit.PathfindingEngineTest\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.CougarMaps\" />\r\n        <item itemvalue=\"JUnit.All in CougarMaps\" />\r\n        <item itemvalue=\"JUnit.PathfindingEngineTest\" />\r\n        <item itemvalue=\"JUnit.com.cougarmaps in CougarMaps\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"cee3d0d4-958c-438a-93d5-492280add6db\" name=\"Changes\" comment=\"\" />\r\n      <created>1746320788588</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1746320788588</updated>\r\n      <workItem from=\"1746320789785\" duration=\"58347000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Major update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746411011454</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746411011454</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Major update\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Major update\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a4083f47559e75687ddecc0ca7be9a9051ab96da)
++++ b/.idea/workspace.xml	(date 1746752381850)
+@@ -4,195 +4,55 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="cee3d0d4-958c-438a-93d5-492280add6db" name="Changes" comment="Major update">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/CougarMaps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cougarmaps/CougarMaps.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/controller/LocationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cougarmaps/controller/LocationsController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cougarmaps/routing/RouteStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cougarmaps/routing/RouteStep.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/CougarMaps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/CougarMaps.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController$RestroomDistance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController$RestroomDistance.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/controller/LocationsController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cougarmaps/routing/RouteStep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cougarmaps/routing/RouteStep.class" afterDir="false" />
+-    </list>
++    <list default="true" id="cbd76ef2-97f6-4420-94f6-ad957429b1ad" name="Changes" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Class" />
+-      </list>
+-    </option>
+-  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;JJFrozenInCarbonite&quot;
+-  }
+-}</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/cs370-group9/cougar-maps.git&quot;,
+-    &quot;accountId&quot;: &quot;29abd299-b354-4cd5-994d-d9b819da3d5c&quot;
+-  }
+-}</component>
+-  <component name="KubernetesApiPersistence">{}</component>
+-  <component name="KubernetesApiProvider">{
+-  &quot;isMigrated&quot;: true
+-}</component>
+-  <component name="ProblemsViewState">
+-    <option name="selectedTabId" value="CurrentFile" />
+-  </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 8
+-}</component>
+-  <component name="ProjectId" id="2wbqncjjfZTVb3ApSNN6iTQhDO0" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+     "Application.CougarMaps.executor": "Run",
+-    "Application.MainView.executor": "Run",
+-    "JUnit.All in CougarMaps.executor": "Run",
+-    "JUnit.PathfindingEngineTest.executor": "Run",
+-    "JUnit.com.cougarmaps in CougarMaps.executor": "Run",
+-    "Maven.CougarMaps [clean].executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "jj4",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "junie.onboarding.icon.badge.shown": "true",
+-    "last_opened_file_path": "C:/Users/jonat/IdeaProjects/CougarMaps/pom.xml",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "vue.rearranger.settings.migration": "true"
++    "git-widget-placeholder": "main"
+   }
+-}</component>
+-  <component name="RecentsManager">
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\jonat\IdeaProjects\CougarMaps\src\main\resources\com\cougarmaps\view" />
+-      <recent name="C:\Users\jonat\IdeaProjects\CougarMaps\src\main\resources" />
+-      <recent name="C:\Users\jonat\IdeaProjects\CougarMaps\resources" />
+-    </key>
+-  </component>
+-  <component name="RunAnythingCache">
+-    <option name="myCommands">
+-      <command value="mvn clean" />
+-    </option>
+-  </component>
+-  <component name="RunManager" selected="Application.CougarMaps">
+-    <configuration name="CougarMaps" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.cougarmaps.CougarMaps" />
++}]]></component>
++  <component name="RunManager">
++    <configuration name="GraphModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="CougarMaps" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.cougarmaps.*" />
++          <option name="PATTERN" value="com.cougarmaps.model.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="All in CougarMaps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="CougarMaps" />
+-      <option name="PACKAGE_NAME" value="" />
+-      <option name="TEST_OBJECT" value="package" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="PathfindingEngineTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="CougarMaps" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="com.cougarmaps.engine.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <option name="PACKAGE_NAME" value="com.cougarmaps.engine" />
+-      <option name="MAIN_CLASS_NAME" value="com.cougarmaps.engine.PathfindingEngineTest" />
++      <option name="PACKAGE_NAME" value="com.cougarmaps.model" />
++      <option name="MAIN_CLASS_NAME" value="com.cougarmaps.model.GraphModelTest" />
+       <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="com.cougarmaps in CougarMaps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="CougarMaps" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="com.cougarmaps.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <option name="PACKAGE_NAME" value="com.cougarmaps" />
+-      <option name="TEST_OBJECT" value="package" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <list>
+-      <item itemvalue="Application.CougarMaps" />
+-      <item itemvalue="JUnit.All in CougarMaps" />
+-      <item itemvalue="JUnit.com.cougarmaps in CougarMaps" />
+-      <item itemvalue="JUnit.PathfindingEngineTest" />
+-    </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.CougarMaps" />
+-        <item itemvalue="JUnit.All in CougarMaps" />
+-        <item itemvalue="JUnit.PathfindingEngineTest" />
+-        <item itemvalue="JUnit.com.cougarmaps in CougarMaps" />
++        <item itemvalue="JUnit.GraphModelTest" />
+       </list>
+     </recent_temporary>
+-  </component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+-      </set>
+-    </attachedChunks>
+   </component>
+   <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="cee3d0d4-958c-438a-93d5-492280add6db" name="Changes" comment="" />
+-      <created>1746320788588</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1746320788588</updated>
+-      <workItem from="1746320789785" duration="58347000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="Major update">
+-      <option name="closed" value="true" />
+-      <created>1746411011454</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1746411011454</updated>
+-    </task>
+-    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="Major update" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Major update" />
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
++          <line>11</line>
++          <option name="timeStamp" value="1" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
