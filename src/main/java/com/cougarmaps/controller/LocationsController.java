@@ -17,6 +17,11 @@ import com.cougarmaps.view.RestroomView;
 import javax.swing.*;
 import java.util.*;
 
+
+/** * The LocationsController class handles the logic for selecting locations
+ * (classrooms or restrooms) in the Cougar Maps application. It manages user
+ * interactions, validates selections, and coordinates with the model and view.
+ */
 public class LocationsController {
     private final GraphModel model;
     private final LocationsView view;
@@ -25,6 +30,12 @@ public class LocationsController {
     private Node endNode;
     private boolean startMode;
 
+    /**
+     * Constructor for the LocationsController.
+     *
+     * @param model The GraphModel instance representing the graph.
+     * @param view  The LocationsView instance for user interaction.
+     */
     public LocationsController(GraphModel model, LocationsView view) {
         this.model = model;
         this.view = view;
@@ -45,6 +56,9 @@ public class LocationsController {
         setupListeners();
     }
 
+    /**
+     * Sets up the listeners for the UI components.
+     */
     private void setupListeners() {
         JComboBox<String> buildingDropDown = view.getBuildingDropDown();
         JComboBox<String> floorDropDown = view.getFloorDropDown();
@@ -273,6 +287,12 @@ public class LocationsController {
         findRestroomRadioButton.addActionListener(e -> validateForm.run());
     }
 
+    /**
+     * Finds the nearest restroom to the given node.
+     *
+     * @param node The starting node.
+     * @return The nearest restroom node.
+     */
     private static class RestroomDistance {
         Node node;
         double distance;

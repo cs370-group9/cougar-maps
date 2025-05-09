@@ -13,8 +13,6 @@ public class CougarMaps {
             try {
                 // Initialize model
                 GraphModel model = GraphDAO.loadGraphFromCSV();
-                //model.addNode(new Node("600", "San Marcos", "Fake Building", "0", "Room 101", NodeType.CLASSROOM, NodeStatus.ACTIVE));
-
 
                 // Initialize view (the frame is already constructed inside LocationsView)
                 LocationsView view = new LocationsView();
