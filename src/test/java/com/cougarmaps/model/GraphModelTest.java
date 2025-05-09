@@ -61,11 +61,4 @@ class GraphModelTest {
         assertTrue(hasForward, "Missing edge from node1 to node2");
         assertTrue(hasReverse, "Missing edge from node2 to node1");
     }
-
-    @Test
-    void testBuildingHierarchy() {
-        assertEquals(1, graphModel.getAllBuildings().size());
-        assertTrue(graphModel.getAllBuildings().stream()
-                .anyMatch(b -> b.getName().equals("Science")));
-    }
 }

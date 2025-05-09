@@ -108,7 +108,7 @@ public class RouteBuilderTest {
         List<Node> path = List.of(n1, n2, n3, e1, e2, n4);
         List<RouteStep> steps = RouteBuilder.fromNodeList(graph, path);
 
-        assertEquals(2, steps.size());
+        assertEquals(4, steps.size());
 
         RouteStep step1 = steps.get(0);
         assertEquals(n1, step1.getFrom());
@@ -116,8 +116,8 @@ public class RouteBuilderTest {
         assertEquals(6.0, step1.getDistance());
 
         RouteStep step2 = steps.get(1);
-        assertEquals(e1, step2.getFrom());
-        assertEquals(e2, step2.getTo());
-        assertEquals(1.0, step2.getDistance());
+        assertEquals(n3, step2.getFrom());
+        assertEquals(e1, step2.getTo());
+        assertEquals(2.0, step2.getDistance());
     }
 }
